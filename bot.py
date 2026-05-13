@@ -19,7 +19,7 @@ from cooper import Cooper
 # ── Credentials ───────────────────────────────────────────────────────────────
 API_ID   = 30048386
 API_HASH = "cd49d577ef3ad3e601d9b44789ab630e"
-SESSION  = os.environ.get("SESSION_STRING", "pika_session")
+SESSION  = os.environ.get("SESSION_STRING", "")
 
 SOURCE_CHANNEL = "@pikadump"
 TARGET_CHANNEL = "@pikaapproved"
@@ -178,7 +178,11 @@ async def main():
     load_bin_db()
     print(f"[*] BIN database loaded: {len(BIN_DB):,} entries")
 
-    client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
+    # Use StringSession if env var set, else fall back to file session
+    if SESSION:
+        client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
+    else:
+        client = TelegramClient("pika_session", API_ID, API_HASH)
     await client.start()
     print("[*] Telegram client started")
 
