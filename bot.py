@@ -12,13 +12,14 @@ import re
 import random
 
 from telethon import TelegramClient, events
+from telethon.sessions import StringSession
 
 from cooper import Cooper
 
 # ── Credentials ───────────────────────────────────────────────────────────────
 API_ID   = 30048386
 API_HASH = "cd49d577ef3ad3e601d9b44789ab630e"
-SESSION  = "pika_session"
+SESSION  = os.environ.get("SESSION_STRING", "pika_session")
 
 SOURCE_CHANNEL = "@pikadump"
 TARGET_CHANNEL = "@pikaapproved"
@@ -177,7 +178,7 @@ async def main():
     load_bin_db()
     print(f"[*] BIN database loaded: {len(BIN_DB):,} entries")
 
-    client = TelegramClient(SESSION, API_ID, API_HASH)
+    client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
     await client.start()
     print("[*] Telegram client started")
 
