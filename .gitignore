@@ -1,0 +1,19 @@
+# Sensitive files — never commit
+*.session
+*.session-journal
+.env
+session_string.txt
+cooper_log.txt
+result.txt
+test_write.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Old checker files
+d.py
+c.py
+k.py
+p.py

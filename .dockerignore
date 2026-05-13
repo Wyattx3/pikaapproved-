@@ -1,0 +1,13 @@
+*.session
+*.session-journal
+*.pyc
+__pycache__/
+.env
+cooper_log.txt
+result.txt
+*.png
+*.jpg
+d.py
+c.py
+k.py
+p.py

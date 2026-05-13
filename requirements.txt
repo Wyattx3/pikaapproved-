@@ -1,0 +1,5 @@
+telethon==1.43.2
+playwright==1.59.0
+requests==2.32.3
+user-agent==0.1.10
+requests-toolbelt==1.0.0
